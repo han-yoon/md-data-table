@@ -1,5 +1,10 @@
 ## Change Log
 
+#### Version 0.10.10
+###### August 25, 2016
+
+Bug fixes for onPaginate and onReorder to support ES6
+
 #### Version 0.10.9
 ###### April 26, 2016
 

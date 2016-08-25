@@ -2,7 +2,7 @@
  * Angular Material Data Table
  * https://github.com/daniel-nagy/md-data-table
  * @license MIT
- * v0.10.9
+ * v0.10.10
  */
 (function (window, angular, undefined) {
 'use strict';
@@ -236,7 +236,7 @@ function mdColumn($compile, $mdUtil) {
 
         if(angular.isFunction(headCtrl.onReorder)) {
           $mdUtil.nextTick(function () {
-            headCtrl.onReorder(headCtrl.order);
+            headCtrl.onReorder({order: headCtrl.order});
           });
         }
       });
@@ -826,7 +826,7 @@ function mdHead($compile) {
     restrict: 'A',
     scope: {
       order: '=?mdOrder',
-      onReorder: '=?mdOnReorder'
+      onReorder: '&?mdOnReorder'
     }
   };
 }
@@ -1338,7 +1338,7 @@ function mdTablePagination() {
     self.onPaginationChange = function () {
       if(angular.isFunction(self.onPaginate)) {
         $mdUtil.nextTick(function () {
-          self.onPaginate(self.page, self.limit);
+          self.onPaginate({page: self.page, limit: self.limit});
         });
       }
     };
@@ -1394,7 +1394,7 @@ function mdTablePagination() {
       limit: '=mdLimit',
       page: '=mdPage',
       pageSelect: '=?mdPageSelect',
-      onPaginate: '=?mdOnPaginate',
+      onPaginate: '&?mdOnPaginate',
       limitOptions: '=?mdLimitOptions',
       total: '@mdTotal'
     },
